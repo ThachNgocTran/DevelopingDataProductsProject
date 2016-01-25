@@ -18,8 +18,8 @@ Determine which classifiers are most suitable for predicting SPAM Emails
 - Student: Thach-Ngoc TRAN
 - ShinyApps Link: https://thachngoctran.shinyapps.io/RDir/
 - ShinyApps Source Code (GitHub): https://goo.gl/pzlkud
-- Slidify Link: 
-- Slidify Source Code (GitHub): 
+- Slidify Presentation Link: https://thachngoctran.github.io/
+- Slidify Source Code (GitHub): https://goo.gl/LHBJNJ
 
 ---
 
