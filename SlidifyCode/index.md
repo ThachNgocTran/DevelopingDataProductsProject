@@ -7,7 +7,7 @@ framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : standalone # {standalone, draft, selfcontained}
+mode        : selfcontained # {standalone, draft, selfcontained}
 knit        : slidify::knit2slides
 ---
 
@@ -54,6 +54,13 @@ dim(spam)
 
 
 ```
+##           Reference
+## Prediction nonspam spam
+##    nonspam     664   44
+##    spam         33  409
+```
+
+```
 ##  Accuracy 
 ## 0.9330435
 ```
@@ -68,14 +75,19 @@ dim(spam)
 
 - However, accuracy can be adjusted by using only certain columns. => choose in the left
 - Let's say, drop column "address", the ShinyApps immediately re-computes the model.
-- The new accuracy will be:
 
+
+```
+##           Reference
+## Prediction nonspam spam
+##    nonspam     663   45
+##    spam         34  408
+```
 
 ```
 ##  Accuracy 
 ## 0.9313043
 ```
-
 - As on the ShinyApps:
 
 <img src = './assets/img/NewAcc.png' height='60%' width='60%'></img>

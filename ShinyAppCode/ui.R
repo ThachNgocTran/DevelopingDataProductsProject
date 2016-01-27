@@ -1,6 +1,7 @@
 library(shiny)
 shinyUI(pageWithSidebar(
   headerPanel("SPAM Email Classifiers"),
+  
   sidebarPanel(style = "overflow-y:scroll; max-height: 500px; position:relative;",
     h3('Choose the desired classifiers'),
     checkboxGroupInput("id2", 
@@ -65,24 +66,18 @@ shinyUI(pageWithSidebar(
                      ), selected=c("make", "address", "all", "num3d", "our", "over", "remove", "internet", "order", "mail", "receive", "will", "people", "report", "addresses", "free", "business", "email", "you", "credit", "your", "font", "num000", "money", "hp", "hpl", "george", "num650", "lab", "labs", "telnet", "num857", "data", "num415", "num85", "technology", "num1999", "parts", "pm", "direct", "cs", "meeting", "original", "project", "re", "edu", "table", "conference", "charSemicolon", "charRoundbracket", "charSquarebracket", "charExclamation", "charDollar", "charHash", "capitalAve", "capitalLong", "capitalTotal"))
   ),
   mainPanel(
+      a("Source code here!",     href="https://github.com/ThachNgocTran/DevelopingDataProductsProject/tree/master/ShinyAppCode", target="_blank"),
       h3('Result'),
-      h4('Running may take up to 20 seconds...'),
+      h4('Running may take up to 30 seconds. Please be patient...'),
       verbatimTextOutput("oid1"),
-      HTML("<br><br>"),
       h3('How it works?'),
-      p('Dataset spam in library <kernlab> has 4601 rows and 58 columns.'),
-      p('We split the dataset into 75% for training and 25% for testing, using random sampling (createDataPartition() in library <caret>).'),
-      code('inTrain <- createDataPartition(y=spam$type, p=0.75, list=FALSE)'),
-      HTML("<br>"),
-      code('training <- spam[inTrain,]'),
-      HTML("<br>"),
-      code('testing <- spam[-inTrain,]'),
-      p('Then, the chosen columns besides together with the <type> (spam, nonspam) will be used to train a model using Generalized Linear Models (train() in library <caret>).'),
-      code('modelFit <- train(type ~., data=trainingTemp, method="glm")'),
-      p('Using the built model, make prediction.'),
-      code('predictions <- predict(modelFit, newdata=testingTemp)'),
-      p('Finally, compare the predicted values with the real ones.'),
-      code('confusionMatrix(predictions,testingTemp$type)')
+      p('An email may have many properties such as "address", "contain dollar sign or not", etc. These properties are useful in training a model that helps classify an email (spam or non-spam).'),
+      p('Besides are 57 properties in the dataset "spam" in library "kernlab". Choose the ones to train a model and see the results.'),
+      p('Note: The GUI is highly reactive: one change in chosen properties makes results immediately!'),
+      a("Dataset Description",     href="https://archive.ics.uci.edu/ml/datasets/Spambase", target="_blank"),
+      h3('Technical Details:'),
+      p('Predictive Algorithm: Generalized Linear Models.'),
+      p('Training Set: 75%, Testing Set: 25%. Use Random Sampling to split.')
   )
 ))
 

@@ -3,6 +3,8 @@ library(caret)
 library(kernlab)
 data(spam)
 
+set.seed(32342)
+
 inTrain <- createDataPartition(y=spam$type, p=0.75, list=FALSE)
 training <- spam[inTrain,]
 testing <- spam[-inTrain,]
@@ -19,7 +21,9 @@ myPredict <- function(chosenColumns){
     predictions <- predict(modelFit, newdata=testingTemp)
     
     k = confusionMatrix(predictions,testingTemp$type)
-    k$overall["Accuracy"]
+    a = capture.output(k$table)
+    b = capture.output(k$overall["Accuracy"])
+    cat(sprintf("%s\n%s\n%s\n%s\n\n%s\n%s", a[1], a[2], a[3], a[4], b[1], b[2]))
 }
 
 shinyServer(
