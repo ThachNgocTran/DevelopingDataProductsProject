@@ -1,3 +1,4 @@
+library(e1071)
 library(shiny)
 library(caret)
 library(kernlab)
